@@ -2,6 +2,7 @@ package com.devexercise.developer.Entity;
 
 import com.devexercise.developer.Enum.PromotionTypeEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table (name = "promotions")
@@ -11,6 +12,7 @@ public class Promotion {
     private Long id;
 
     @Column(nullable = false,unique = true)
+    @NotBlank(message = "Promotion name must not be blank")
     private String productName;
 
     @Column(nullable = false)
