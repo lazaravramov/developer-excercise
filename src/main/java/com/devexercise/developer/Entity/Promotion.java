@@ -17,4 +17,27 @@ public class Promotion {
     @Enumerated(EnumType.STRING)
     private PromotionTypeEnum promotionTypeEnum;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public PromotionTypeEnum getPromotionTypeEnum() {
+        return promotionTypeEnum;
+    }
+
+    public void setPromotionTypeEnum(PromotionTypeEnum promotionTypeEnum) {
+        this.promotionTypeEnum = promotionTypeEnum;
+    }
 }
