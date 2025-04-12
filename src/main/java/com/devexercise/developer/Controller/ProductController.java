@@ -2,6 +2,7 @@ package com.devexercise.developer.Controller;
 
 import com.devexercise.developer.Entity.Product;
 import com.devexercise.developer.Service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

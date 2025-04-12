@@ -1,7 +1,9 @@
 package com.devexercise.developer.Service;
 
 import com.devexercise.developer.Entity.Promotion;
+import com.devexercise.developer.Exception.Exceptions.IllegalArgumentException;
 import com.devexercise.developer.Repository.PromotionRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -19,6 +21,9 @@ public class PromotionService {
     }
 
     public Promotion createPromotion(Promotion promotion) {
+        if(!StringUtils.isNotEmpty(promotion.getProductName())) {
+            throw new IllegalArgumentException("productName isn't valid one");
+        }
         return promotionRepository.save(promotion);
     }
 

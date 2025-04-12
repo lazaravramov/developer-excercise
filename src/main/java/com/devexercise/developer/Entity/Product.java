@@ -2,6 +2,7 @@ package com.devexercise.developer.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table (name = "products")
@@ -11,9 +12,11 @@ public class Product {
     private Long id;
 
     @Column (nullable = false,unique = true)
+    @NotBlank(message = "Product name must not be blank")
     private String name;
 
     @Column (nullable = false)
+    @Positive(message = "Price must be positive")
     private Integer price;
 
     public Long getId() {

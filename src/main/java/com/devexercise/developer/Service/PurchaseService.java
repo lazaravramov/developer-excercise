@@ -2,6 +2,7 @@ package com.devexercise.developer.Service;
 
 import com.devexercise.developer.Entity.Product;
 import com.devexercise.developer.Entity.Promotion;
+import com.devexercise.developer.Exception.Exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -25,6 +26,9 @@ public class PurchaseService {
         Integer currentMinForThreeForTwo = Integer.MAX_VALUE;
         Integer currentMinForTwoForOneAndHalf = Integer.MAX_VALUE;
         for (String productName : basket) {
+            if(!products.containsKey(productName)) {
+                throw new NotFoundException("There is not a product with such name in the db");
+            }
             if(promotions.containsKey(productName)) {
                 if(promotions.get(productName).equals("THREE_FOR_TWO")) {
                     countThreeForTwo++;
@@ -57,6 +61,6 @@ public class PurchaseService {
                 price += products.get(productName);
             }
         }
-        return String.format("%.2f aws", price / 100.0);
+     return String.format("%.2f aws", price / 100.0);
     }
 }

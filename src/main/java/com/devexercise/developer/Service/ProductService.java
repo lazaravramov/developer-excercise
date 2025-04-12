@@ -2,7 +2,9 @@ package com.devexercise.developer.Service;
 
 import com.devexercise.developer.Entity.Product;
 import com.devexercise.developer.Entity.Promotion;
+import com.devexercise.developer.Exception.Exceptions.IllegalArgumentException;
 import com.devexercise.developer.Repository.ProductRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -16,6 +18,12 @@ public class ProductService {
     }
 
     public Product createProduct(Product product) {
+        if(!StringUtils.isNotEmpty(product.getName())) {
+            throw new IllegalArgumentException("Product name isn't valid one");
+        }
+        if(product.getPrice() <= 0) {
+            throw  new IllegalArgumentException("Price isn't valid one") ;
+        }
         return productRepository.save(product);
     }
 
